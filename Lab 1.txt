@@ -1,0 +1,60 @@
+
+kubectl version
+kubectl cluster-info
+kubectl get nodes
+
+kubectl create deployment first-deployment --image=katacoda/docker-http-server
+kubectl get pods
+
+kubectl expose deployment first-deployment --port=80 --type=NodePort
+kubectl describe deployments/first-deployment
+kubectl describe services/first-deployment
+
+#deploy the dashboard
+https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
+https://github.com/kubernetes/dashboard
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta4/aio/deploy/recommended.yaml
+kubectl proxy
+
+(new window)
+start http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+
+https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md
+
+kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')
+
+
+kubectl apply -f admin-user.yml
+kubectl application -f role-binding.yml
+
+kubectl -n kubernetes-dashboard get secrets kubernetes-dashboard-token-tthk8
+kubectl -n kubernetes-dashboard describe secrets/kubernetes-dashboard-token-tthk8
+<copy the token>
+
+start http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+<enter the token>
+
+#deploy via kubectl
+kubectl run http --image=katacoda/docker-http-server:latest --replicas=1
+kubectl expose deployment http --external-ip="172.17.164.33" --port=8000 --target-port=80
+curl http://172.17.164.33:8000
+
+kubectl run httpexposed --image=katacoda/docker-http-server:latest --replicas=1 --port=80 --hostport=8001
+curl http://localhost:8001
+
+kubectl scale --replicas=3 deployment httpexposed
+kubectl describe services/httpexposed
+
+#deploy via yaml
+kubectl create -f webapp1.yml
+kubectl get deployments
+
+#create a service
+kubectl create -f service.yml
+kubectl get services
+kubectl describe services/webapp1-svc
+
+#scale existing deployment
+kubectl apply -f deployment.yaml
+

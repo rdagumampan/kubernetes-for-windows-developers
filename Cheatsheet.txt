@@ -1,0 +1,123 @@
+kubectl version
+kubectl cluster-info
+kubectl get nodes
+
+kubectl run kubernetes-bootcamp --image=gcr.io/google-samples/kubernetes-bootcamp:v1 --port=8080
+kubectl run <container-name> --image=<container-image>:<image-tag> --port:<published-port>
+kubectl get deployments
+kubectl proxy
+
+export POD_NAME=$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')
+echo Name of the Pod: $POD_NAME
+
+kubectl get
+kubectl describe
+kubectl logs
+kubectl exec
+
+kubectl logs <pod-name>
+
+kubectl exec <pod-name>
+kubectl exec MyDemoPod env
+kubectl exec MyDemoPod bash ... exit
+
+kubectl expose deployment/<deployment-name> --type="NodePort" --port <published-port>
+kubectl get services/<service-name>
+kubectl describe 
+
+kubectl get pods
+kubectl get deployment
+kubectl get services
+
+kubectl describe deployment
+
+kubectl get pods -l <labelkey>=<label-value>
+kubectl get services -l <labelkey>=<label-value>
+
+kubectl label pod $POD_NAME app=v1
+kubectl describe pods $POD_NAME
+
+kubectl delete service -l run=kubernetes-bootcamp
+
+kubectl scale deployments/kubernetes-bootcamp --replicas=4
+
+kubectl get pods -o wide
+kubectl describe deployments/kubernetes-bootcamp
+kubectl describe services/kubernetes-bootcamp
+
+kubectl scale deployments/kubernetes-bootcamp --replicas=2
+
+kubectl set image deployments/kubernetes-bootcamp kubernetes-bootcamp=jocatalin/kubernetes-bootcamp:v2
+kubectl rollout status deployments/kubernetes-bootcamp
+
+kubectl rollout undo deployments/kubernetes-bootcamp
+
+kube config get-contexts
+kubectl config use-context CONTEXT_NAME
+
+kubectl get pods -n <namespace>  -w
+
+Notes:	
+by default containers are visible to other pods and services in the same cluster
+
+Ftw:
+KubeDNS
+Minikube
+Kubernetes Deployment Controller
+Node
+Pod
+Service
+Kubernetes Deployment
+Kubelet
+LabelSelector
+ServiceSpec
+	ClusterIP
+	NodePort
+	LoadBalancer
+	ExternalName
+	
+Workload resources
+	pods
+	deployments
+	sets
+
+Two types of applications
+	stateful
+	stateless
+
+K8s cluster
+	cluster master
+	nodes
+
+Cluster master
+	kube-api-server
+	etcd
+	kube-scheduler
+	kube-controller-manager
+
+k8s volume types
+	emptyDir
+	secret
+	configMap
+	
+k8s storage resource types
+	persistent
+	non-persistent
+
+aks persistent volumes
+	azure disks
+	azure files
+
+aks storage classses
+	default-standard
+	managed-premium
+
+horizongal pod autoscaler
+cluster autoscaler
+	
+References:
+
+https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+https://www.digitalocean.com/community/cheatsheets/getting-started-with-kubectl-a-kubectl-cheat-sheet#prerequisites
+
+

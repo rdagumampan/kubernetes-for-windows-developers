@@ -1,0 +1,32 @@
+
+Reference Materials
+https://docs.microsoft.com/en-us/azure/aks/
+https://azure.microsoft.com/en-us/resources/kubernetes-learning-path/
+https://docs.microsoft.com/en-us/virtualization/windowscontainers/kubernetes/getting-started-kubernetes-windows
+
+Workshops
+https://kubernetes.io
+https://aksworkshop.io/
+https://github.com/Azure/kubernetes-hackfest
+https://intellipaat.com/blog/tutorial/devops-tutorial
+
+Blogs
+
+Github Repos
+
+News
+https://kubernetes.io/blog/2019/04/01/kubernetes-v1.14-delivers-production-level-support-for-windows-nodes-and-windows-containers/
+
+Tutorials
+https://intellipaat.com/blog/tutorial/devops-tutorial/kubernetes-cheat-sheet/
+
+Full Courses
+
+
+Cheatsheets
+https://intellipaat.com/blog/tutorial/devops-tutorial/kubernetes-cheat-sheet/
+https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+https://www.digitalocean.com/community/cheatsheets/getting-started-with-kubectl-a-kubectl-cheat-sheet#prerequisites
+
+Crash
+https://medium.com/hashmapinc/30-second-kubernetes-concepts-cheat-sheet-98ba813194cb
